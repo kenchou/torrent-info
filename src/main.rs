@@ -22,7 +22,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // 获取 file_paths 参数
     let file_paths: Vec<&String> = matches.get_many("file_paths").unwrap().collect();
 
-    println!("File\tName\tMagnet");
+    println!("File\tMagnet\tName");
     for file_path in file_paths {
         // 打开并读取 torrent 文件
         let mut file = File::open(file_path)?;
@@ -45,8 +45,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         println!(
             "{}\t{}\t{}",
             Path::new(file_path).file_name().unwrap().to_string_lossy(),
+            magnet_uri,
             metainfo.info().directory().unwrap().to_string_lossy(),
-            magnet_uri
         );
     }
 

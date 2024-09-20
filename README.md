@@ -5,7 +5,7 @@ Usage:
 ```
 Extracts the info hash from a torrent file
 
-Usage: torrentinfo <file_path>
+Usage: torrent-info <file_path>
 
 Arguments:
   <file_path>  The path to the torrent file

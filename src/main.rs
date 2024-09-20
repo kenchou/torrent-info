@@ -42,12 +42,22 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let magnet_uri = format!("magnet:?xt=urn:btih:{}", info_hash_hex);
 
         // 打印 magnet URI
-        println!(
-            "{}\t{}\t{}",
-            Path::new(file_path).file_name().unwrap().to_string_lossy(),
-            magnet_uri,
-            metainfo.info().directory().unwrap().to_string_lossy(),
-        );
+
+        if let Some(directory) = metainfo.info().directory() {
+            println!(
+                "{}\t{}\t📁 {}",
+                Path::new(file_path).file_name().unwrap().to_string_lossy(),
+                magnet_uri,
+                directory.to_string_lossy(),
+            );
+        } else {
+            println!(
+                "{}\t{}\t📄 {}",
+                Path::new(file_path).file_name().unwrap().to_string_lossy(),
+                magnet_uri,
+                metainfo.info().files().next().unwrap().path().file_name().unwrap().to_string_lossy(),
+            );
+        }
     }
 
     Ok(())

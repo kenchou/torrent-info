@@ -1,14 +1,14 @@
-Extracts the info hash from a torrent file
-==========================================
+Extracts Torrent Info Hash
+==========================
 
 Usage:
 ```
-Extracts the info hash from a torrent file
+Extracts the info hash from torrent files
 
-Usage: torrent-info <file_path>
+Usage: torrent-info <FILE>...
 
 Arguments:
-  <file_path>  The path to the torrent file
+  <FILE>...  The paths to the torrent files
 
 Options:
   -h, --help     Print help
